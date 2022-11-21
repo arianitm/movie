@@ -6,11 +6,11 @@ import { Provider } from "react-redux";
 import { store } from "./features/movies/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <div>
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  </div>
 );
