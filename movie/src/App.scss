@@ -1,5 +1,12 @@
 @import "../src/common/colors.scss";
 
+.app{
+//  background-color: red;\
+height: 700px;
+overflow-y: scroll;
+
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +20,7 @@ a {
 
 body {
   background: $primary-color;
+  height: 100%;
 }
 .container {
   margin: 0px 40px;

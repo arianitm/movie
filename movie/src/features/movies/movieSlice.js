@@ -9,6 +9,7 @@ export const fetchAsyncMovies = createAsyncThunk(
     const response = await movieApi.get(
       `?apikey=${APIKey}&s=${term}&type=movie`
     );
+    // console.log(response.data);
     return response.data;
   }
 );
