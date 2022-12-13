@@ -7,10 +7,13 @@ import { Settings } from "../../common/settings";
 import Slider from "react-slick";
 import "../MovieListing/MovieListing.scss";
 import "../MovieCard/MovieCard.scss";
+import { successMessage, errorMessage } from "../../messages";
+import { ToastContainer } from "react-toastify";
 
 const MovieUpload = (props) => {
   const [fileUrl, setFileUrl] = useState(null);
   const [moviesList, setMoviesList] = useState("");
+
   const onFileChange = async (e) => {
     const file = e.target.files[0];
     const fileRef = ref(storage, file.name);
@@ -26,9 +29,22 @@ const MovieUpload = (props) => {
     const title = e.target.title.value;
     const description = e.target.description.value;
     if (!title || !description || !fileUrl) {
+      errorMessage();
+      return;
+    } else {
+      successMessage();
+    }
+
+    const isTitle = moviesList.some((storedMovie) => {
+      const isSame = storedMovie.title === title;
+      return isSame;
+    });
+
+    if (isTitle) {
+      errorMessage();
       return;
     }
-    alert("Uploaded Movie");
+
     await addDoc(collection(db, "movies2"), {
       title: title,
       description: description,
@@ -73,6 +89,7 @@ const MovieUpload = (props) => {
 
   return (
     <div style={{ height: "700px" }}>
+      <ToastContainer />
       <form onSubmit={onSubmit}>
         <h1>Upload Movie</h1>
         <div className="form-group">
@@ -88,9 +105,7 @@ const MovieUpload = (props) => {
           <label htmlFor="images">Images</label>
           <input onChange={onFileChange} type="file" />
           <div className="file-dummy">
-            <div className="success">
-              Great, your files are selected. Keep on.
-            </div>
+            <div className="">Add File:</div>
             <div className="default">Please select some files</div>
           </div>
         </div>

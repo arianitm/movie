@@ -24,22 +24,6 @@ const Header = (props) => {
     setTerm("");
   };
 
-  // const [authUser, setAuthUser] = useState(null);
-
-  // useEffect(() => {
-  //   const listen = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       setAuthUser(user);
-  //     } else {
-  //       setAuthUser(null);
-  //     }
-  //   });
-
-  //   return () => {
-  //     listen();
-  //   };
-  // }, []);
-
   const userSignOut = () => {
     signOut(auth)
       .then(() => {
