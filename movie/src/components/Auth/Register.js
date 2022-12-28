@@ -32,10 +32,10 @@ const Register = () => {
   return (
     <div>
       <ToastContainer />
-      <div class="login-box">
+      <div className="login-box">
         <h2>Create Account</h2>
         <form onSubmit={signUp}>
-          <div class="user-box">
+          <div className="user-box">
             <input
               type="email"
               placeholder="Enter your email"
@@ -44,7 +44,7 @@ const Register = () => {
             ></input>
             <label>Username</label>
           </div>
-          <div class="user-box">
+          <div className="user-box">
             <input
               type="password"
               placeholder="Enter your password"

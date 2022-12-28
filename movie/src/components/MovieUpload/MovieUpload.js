@@ -74,7 +74,7 @@ const MovieUpload = (props) => {
       <div className="card-item">
         <div className="card-inner ">
           <div className="card-top">
-            <img src={moviesList[product].avatar}></img>
+            <img src={moviesList[product].avatar} alt="avatar" />
           </div>
           <div className="card-bottom">
             <div className="card-info">

@@ -11,11 +11,7 @@
   }
 }
 
-// .movie-container {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-//   grid-gap: 15px;
-// }
+
 
 .file-area {
   width: 100%;
@@ -38,7 +34,7 @@
     background: rgba(255,255,255,0.2);
     border: 2px dashed rgba(255,255,255,0.2);
     text-align: center;
-    transition: background 0.3s ease-in-out;
+    transition: 'background 0.3s ease-in-out';
     
     .success {
       display: none;

@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   fetchAsyncMovies,
   fetchAsyncShows,
 } from "../../features/movies/movieSlice";
-import user from "../../images/user.png";
 import "./Header.scss";
 import AuthContext from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
-const Header = (props) => {
+const Header = () => {
   const authCtx = useContext(AuthContext);
   const [term, setTerm] = useState("");
+  const navigation = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
@@ -28,6 +29,7 @@ const Header = (props) => {
     signOut(auth)
       .then(() => {
         console.log("sign out successful");
+        navigation("/");
       })
       .catch((error) => console.log(error));
   };
@@ -53,6 +55,9 @@ const Header = (props) => {
       </div>
       {authCtx.authUser ? (
         <>
+          <Link to="/movieupload">
+            <div className="register"> My Movies</div>
+          </Link>
           <Link onClick={userSignOut}>Sign Out</Link>
         </>
       ) : (

@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { auth } from "../../firebase";
 import "./Login.scss";
 import { ToastContainer } from "react-toastify";
@@ -15,10 +15,10 @@ const Login = () => {
   const signIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(() => {
         successMessageLogin();
         setTimeout(() => {
-          navigation("/");
+          navigation("/movieupload");
         }, 2000);
       })
       .catch((error) => {
@@ -30,10 +30,10 @@ const Login = () => {
   return (
     <div>
       <ToastContainer />
-      <div class="login-box">
+      <div className="login-box">
         <h2>Login</h2>
         <form onSubmit={signIn}>
-          <div class="user-box">
+          <div className="user-box">
             <input
               type="email"
               placeholder="Enter your email"
@@ -42,7 +42,7 @@ const Login = () => {
             ></input>
             <label>Username</label>
           </div>
-          <div class="user-box">
+          <div className="user-box">
             <input
               type="password"
               placeholder="Enter your password"
